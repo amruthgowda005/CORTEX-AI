@@ -1,0 +1,80 @@
+# ===========================
+# CORTEX AI — .gitignore
+# ===========================
+
+# --- Node / Frontend ---
+node_modules/
+.next/
+.nuxt/
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+*.tsbuildinfo
+.turbo/
+
+# --- Environment & Secrets ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+*.secret
+secrets/
+
+# --- Python / Backend ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+*.egg-info/
+dist/
+*.egg
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.log
+celerybeat-schedule
+
+# --- Database ---
+*.sqlite3
+*.db
+*.sql
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# --- OS ---
+Desktop.ini
+ehthumbs.db
+
+# --- Docker ---
+*.override.yml
+
+# --- Logs ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Misc ---
+*.bak
+*.tmp
+*.temp
+coverage/
+.nyc_output/
