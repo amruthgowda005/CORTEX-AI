@@ -7,6 +7,9 @@ param(
     [string]$CommitMessage = "update: $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
 )
 
+# Stage all changes
+Set-Location "D:\CORTEX-AI"
+
 # Refresh PATH to ensure gh and git are available
 $env:PATH = [System.Environment]::GetEnvironmentVariable("PATH","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("PATH","User")
 
