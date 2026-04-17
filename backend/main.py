@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from textblob import TextBlob
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import re
@@ -43,6 +44,23 @@ def clean_text(text: str) -> str:
     return text
 
 
+def get_sentiment(text: str) -> str:
+    """Calculate sentiment polarity using TextBlob."""
+    if not text.strip():
+        return "neutral"
+        
+    blob = TextBlob(text)
+    polarity = blob.sentiment.polarity
+    
+    if polarity > 0.1:
+        return "positive"
+    elif polarity < -0.1:
+        return "negative"
+    else:
+        return "neutral"
+
+
+
 @app.get("/")
 def root():
     return {"message": "Cortex AI API is running 🚀", "version": "1.0.0"}
@@ -51,8 +69,10 @@ def root():
 @app.post("/analyze", response_model=ReviewResponse)
 def analyze_review(payload: ReviewRequest):
     cleaned = clean_text(payload.review)
+    sentiment = get_sentiment(cleaned)
+    
     return ReviewResponse(
         review=payload.review,
         cleaned_text=cleaned,
-        sentiment="pending",
+        sentiment=sentiment,
     )
