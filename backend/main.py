@@ -26,10 +26,20 @@ class ReviewResponse(BaseModel):
 
 
 def clean_text(text: str) -> str:
-    """Basic text cleaning — remove extra spaces, special chars."""
-    text = text.strip()
-    text = re.sub(r"\s+", " ", text)
+    """Enhanced preprocessing: lowercase, space removal, and emoji stripping."""
+    # 1. Convert to lowercase
+    text = text.lower()
+    
+    # 2. Remove emojis and non-ascii characters
+    # This is a robust way to strip most emojis while keeping standard text
+    text = text.encode('ascii', 'ignore').decode('ascii')
+    
+    # 3. Remove characters that aren't basic symbols or alphanumerics
     text = re.sub(r"[^\w\s.,!?'-]", "", text)
+    
+    # 4. Collapse extra spaces and strip
+    text = re.sub(r"\s+", " ", text).strip()
+    
     return text
 
 

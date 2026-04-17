@@ -45,16 +45,16 @@ const ResultCard = ({ result }) => {
   const sentiment = sentimentConfig[result.sentiment] || sentimentConfig.pending
 
   return (
-    <div className="glass-card rounded-2xl p-6 shadow-2xl shadow-black/40 animate-slide-up">
+    <div className="glass-card rounded-2xl p-6 shadow-2xl shadow-black/40 animate-fade-in">
       {/* Card header */}
-      <div className="flex items-center gap-2 mb-5">
+      <div className="flex items-center gap-2 mb-5 animate-slide-up">
         <div className="w-2 h-2 rounded-full bg-blue-400" />
         <span className="text-slate-400 text-sm font-medium">Analysis Result</span>
       </div>
 
       <div className="space-y-4">
         {/* Sentiment Badge */}
-        <div className={`flex items-center gap-3 p-4 rounded-xl border ${sentiment.bg} ${sentiment.border}`}>
+        <div className={`flex items-center gap-3 p-4 rounded-xl border ${sentiment.bg} ${sentiment.border} animate-slide-up [animation-delay:100ms]`}>
           <div className={`w-9 h-9 rounded-lg ${sentiment.bg} border ${sentiment.border} flex items-center justify-center flex-shrink-0`}>
             <svg className={`w-5 h-5 ${sentiment.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {sentiment.icon}
@@ -72,7 +72,7 @@ const ResultCard = ({ result }) => {
         </div>
 
         {/* Cleaned Text */}
-        <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+        <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02] animate-slide-up [animation-delay:200ms]">
           <div className="flex items-center gap-2 mb-2">
             <svg className="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -84,7 +84,7 @@ const ResultCard = ({ result }) => {
         </div>
 
         {/* Original */}
-        <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02]">
+        <div className="p-4 rounded-xl border border-white/5 bg-white/[0.02] animate-slide-up [animation-delay:300ms]">
           <div className="flex items-center gap-2 mb-2">
             <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
